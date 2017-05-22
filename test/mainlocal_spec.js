@@ -8,6 +8,7 @@ describe("Simplest Test", function() {
     let answer = setHiddenFields();
     expect(answer).toBeGreaterThan(0);
     expect(answer).toBeLessThan(10000);
+    expect(answer.length).toBe(4);
   });
 
 
