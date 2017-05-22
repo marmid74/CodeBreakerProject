@@ -17,15 +17,18 @@ function guess() {
     attempt.value = attemptNumber;
     console.log("attemt nr: " + attempt.value);
 
-      if(getResults(input)) {
+    if(getResults(input)) {
         setMessage("You win! :)");
-    } else {
-        if(attemptNumber <10) {
-          setMessage("Incorrect, try again.");
-        } else {
+        showAnswer(true);
+        showReplay();
+    } else if (attemptNumber >=10) {
           setMessage("You loose! :(");
-        }
-    };
+          showAnswer(false);
+          showReplay();
+    } else {
+        setMessage("Incorrect, try again.");
+
+    }
 }
 
 //implement new functions here
@@ -91,8 +94,20 @@ function getResults(input){
   }
 }
 
-function showAnswer(input) {
-  document.getElementById('code').innerHTML = answer.value;
-  
+function showAnswer(success) {
+  let code = document.getElementById('code').innerHTML;
+    if (success) {
+    code.className += ' sucess';
+  } else {
+    code.className += ' failure';
+  }
 
+  code = '<strong style="color:green">'+ answer.value +'<strong>';
+  document.getElementById('code').innerHTML = code;
+
+}
+
+function showReplay() {
+  document.getElementById('guessing-div').style.display = 'none';
+  document.getElementById('replay-div').style.display = 'block';
 }
