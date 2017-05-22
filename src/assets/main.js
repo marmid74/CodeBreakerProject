@@ -90,3 +90,9 @@ function getResults(input){
     return false
   }
 }
+
+function showAnswer(input) {
+  document.getElementById('code').innerHTML = answer.value;
+  
+
+}
